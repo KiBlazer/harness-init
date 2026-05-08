@@ -61,7 +61,7 @@ cp -R skills/harness-init /path/to/workspace/.agents/skills/
 Then invoke it in Claude Code:
 
 ```text
-/harness-init 给当前项目创建 Harness
+/harness-init create a Harness for the current project
 ```
 
 ## Use the CLI directly

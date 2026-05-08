@@ -11,10 +11,10 @@ Use this skill when the user wants to create, standardize, or refresh a project-
 
 Trigger examples:
 
-- "给这个项目创建 harness"
-- "初始化 .harness"
-- "把 Harness 固化到这个工程"
-- "其他工程也要快速创建 harness"
+- "create a harness for this project"
+- "initialize .harness"
+- "standardize Harness for this repository"
+- "make Harness quick to create for other projects"
 - "make a harness init for this repo"
 
 ## Goal
