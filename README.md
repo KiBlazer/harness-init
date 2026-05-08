@@ -46,10 +46,16 @@ It helps teams standardize Harness Engineering practices across projects:
 
 ## Install as a Claude Code plugin
 
-Install directly from GitHub with Claude Code's plugin flow:
+Add the repository as a plugin marketplace:
 
 ```text
-/plugin install github@KiBlazer/harness-init
+/plugin marketplace add KiBlazer/harness-init
+```
+
+Then install the plugin from that marketplace:
+
+```text
+/plugin install harness-init@kiblazer-harness-tools
 ```
 
 After plugin installation, invoke the namespaced skill:

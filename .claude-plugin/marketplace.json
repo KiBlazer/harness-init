@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace-manifest.json",
+  "name": "kiblazer-harness-tools",
+  "owner": {
+    "name": "KiBlazer"
+  },
+  "plugins": [
+    {
+      "name": "harness-init",
+      "source": "./",
+      "description": "Initialize project-level .harness directories for Harness Engineering workflows.",
+      "version": "0.2.0",
+      "author": {
+        "name": "KiBlazer"
+      },
+      "repository": "https://github.com/KiBlazer/harness-init",
+      "license": "MIT"
+    }
+  ]
+}

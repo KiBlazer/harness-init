@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0 - 2026-05-08
+
+- Added `.claude-plugin/marketplace.json` so the repository can be added as a Claude Code marketplace.
+- Documented marketplace installation flow with `/plugin marketplace add` and `/plugin install`.
+- Added validation coverage for plugin and marketplace manifests.
+
 ## 0.1.0 - 2026-05-08
 
 - Initial `harness-init` Claude Code skill.

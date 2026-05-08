@@ -4,10 +4,14 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 CLI="$ROOT/skills/harness-init/bin/init-harness.sh"
 PLUGIN_MANIFEST="$ROOT/.claude-plugin/plugin.json"
+MARKETPLACE_MANIFEST="$ROOT/.claude-plugin/marketplace.json"
 
 bash -n "$CLI"
 jq -e '.name == "harness-init" and .version and .description and .repository and .license == "MIT"' "$PLUGIN_MANIFEST" >/dev/null
+jq -e '.name == "kiblazer-harness-tools" and (.plugins | length == 1) and .plugins[0].name == "harness-init" and .plugins[0].source == "./"' "$MARKETPLACE_MANIFEST" >/dev/null
 test -f "$ROOT/skills/harness-init/SKILL.md"
+claude plugin validate "$PLUGIN_MANIFEST" >/dev/null
+claude plugin validate "$MARKETPLACE_MANIFEST" >/dev/null
 
 tmpdir="$(mktemp -d)"
 trap 'rm -rf "$tmpdir"' EXIT
