@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "harness-init",
+  "version": "0.1.0",
+  "description": "Initialize project-level .harness directories for Harness Engineering workflows.",
+  "author": {
+    "name": "KiBlazer"
+  },
+  "repository": "https://github.com/KiBlazer/harness-init",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "skill",
+    "harness",
+    "harness-engineering",
+    "autopilot",
+    "verification"
+  ]
+}

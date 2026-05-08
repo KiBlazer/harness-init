@@ -1,6 +1,6 @@
 # harness-init
 
-`harness-init` is a Claude Code skill and small shell CLI for creating a project-level `.harness/` control layer for AI-assisted engineering work.
+`harness-init` is a Claude Code plugin, skill, and small shell CLI for creating a project-level `.harness/` control layer for AI-assisted engineering work.
 
 It helps teams standardize Harness Engineering practices across projects:
 
@@ -44,7 +44,21 @@ It helps teams standardize Harness Engineering practices across projects:
     └── verification-report.md
 ```
 
-## Install as a Claude Code skill
+## Install as a Claude Code plugin
+
+Install directly from GitHub with Claude Code's plugin flow:
+
+```text
+/plugin install github@KiBlazer/harness-init
+```
+
+After plugin installation, invoke the namespaced skill:
+
+```text
+/harness-init:harness-init create a Harness for the current project
+```
+
+## Install as a standalone Claude Code skill
 
 Copy the skill into a Claude Code skills directory:
 
@@ -127,6 +141,7 @@ The test verifies:
 ## Repository layout
 
 ```text
+.claude-plugin/plugin.json  Claude Code plugin manifest
 skills/harness-init/        Claude Code skill package
 skills/harness-init/bin/    CLI entrypoint
 skills/harness-init/templates/  Generated .harness templates
