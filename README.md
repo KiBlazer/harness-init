@@ -144,6 +144,10 @@ The test verifies:
 - idempotency without `--force`
 - overwrite behavior with `--force`
 
+## Marketplace submission
+
+See [`docs/official-marketplace-checklist.md`](docs/official-marketplace-checklist.md) for the official or curated marketplace readiness checklist.
+
 ## Repository layout
 
 ```text

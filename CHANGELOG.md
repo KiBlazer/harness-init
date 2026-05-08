@@ -2,6 +2,8 @@
 
 ## 0.2.0 - 2026-05-08
 
+- Added GitHub Actions CI for smoke tests and template safety checks.
+- Added official marketplace submission checklist.
 - Added `.claude-plugin/marketplace.json` so the repository can be added as a Claude Code marketplace.
 - Documented marketplace installation flow with `/plugin marketplace add` and `/plugin install`.
 - Added validation coverage for plugin and marketplace manifests.

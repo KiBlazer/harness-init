@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Run harness-init smoke tests
+        run: tests/test-init-harness.sh
+
+      - name: Check for non-English Han characters
+        run: |
+          if grep -R -nP '[\p{Han}]' . --exclude-dir=.git; then
+            echo "Found Han characters in repository content." >&2
+            exit 1
+          fi
+
+      - name: Check generated templates for machine-specific paths
+        run: |
+          tmpdir="$(mktemp -d)"
+          trap 'rm -rf "$tmpdir"' EXIT
+          skills/harness-init/bin/init-harness.sh --project-root "$tmpdir" --project-name ci-project >/dev/null
+          if grep -R -nE '(/home/|/Users/|[A-Za-z]:\\)' "$tmpdir/.harness"; then
+            echo "Generated Harness contains machine-specific absolute paths." >&2
+            exit 1
+          fi

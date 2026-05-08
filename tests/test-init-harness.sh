@@ -10,8 +10,12 @@ bash -n "$CLI"
 jq -e '.name == "harness-init" and .version and .description and .repository and .license == "MIT"' "$PLUGIN_MANIFEST" >/dev/null
 jq -e '.name == "kiblazer-harness-tools" and (.plugins | length == 1) and .plugins[0].name == "harness-init" and .plugins[0].source == "./"' "$MARKETPLACE_MANIFEST" >/dev/null
 test -f "$ROOT/skills/harness-init/SKILL.md"
-claude plugin validate "$PLUGIN_MANIFEST" >/dev/null
-claude plugin validate "$MARKETPLACE_MANIFEST" >/dev/null
+if command -v claude >/dev/null 2>&1; then
+  claude plugin validate "$PLUGIN_MANIFEST" >/dev/null
+  claude plugin validate "$MARKETPLACE_MANIFEST" >/dev/null
+else
+  printf 'claude CLI not found; skipping Claude plugin validate\n'
+fi
 
 tmpdir="$(mktemp -d)"
 trap 'rm -rf "$tmpdir"' EXIT
