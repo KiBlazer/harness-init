@@ -9,7 +9,7 @@ bash -n "$CLI"
 tmpdir="$(mktemp -d)"
 trap 'rm -rf "$tmpdir"' EXIT
 
-"$CLI" --project-root "$tmpdir" --project-name demo-project > "$tmpdir/init.out"
+(cd "$ROOT" && skills/harness-init/bin/init-harness.sh --project-root "$tmpdir" --project-name demo-project > "$tmpdir/init.out")
 
 required_files=(
   ".harness/README.md"
@@ -51,5 +51,14 @@ grep -q 'SKIP .harness/README.md' "$tmpdir/init-second.out"
 "$CLI" --project-root "$tmpdir" --project-name demo-project --force > "$tmpdir/init-force.out"
 grep -q "demo-project Harness" "$tmpdir/.harness/README.md"
 grep -q 'WRITE .harness/README.md' "$tmpdir/init-force.out"
+
+inside_tmpdir="$(mktemp -d)"
+"$CLI" --project-root "$inside_tmpdir" --project-name direct-project >/dev/null
+(
+  cd "$inside_tmpdir"
+  "$CLI" --project-name inside-project --force > init-inside.out
+)
+grep -q "inside-project Harness" "$inside_tmpdir/.harness/README.md"
+rm -rf "$inside_tmpdir"
 
 printf 'harness-init tests passed\n'
